@@ -9,8 +9,8 @@
 </head>
 <body>
 	<form action="/SerchServlet" method="post" name="serchform">
-	<label for="keyword">キーワード検索</label>
-	<input type="text" name="keyword">
+	<label for="inputword">キーワード検索</label>
+	<input type="text" name="inputword">
 	<button type="submit">検索</button><br></form>
 </body>
 </html>
