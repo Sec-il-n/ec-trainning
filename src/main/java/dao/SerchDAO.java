@@ -22,14 +22,15 @@ public class SerchDAO  {
 
 	}
 
-	public List<Master> findProduct(String keyword){
+	public List<Master> findProduct(String keyword) throws ClassNotFoundException{
 		List<Master> serchResult=new ArrayList<Master>();
 		String sql1;
 //		String sql2;
 //		String sql3;
 //		int len;
-		Connection conn;
+		Connection conn=null;
 		try {
+			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			getSql gs=new getSql();
 			sql1=gs.selectProducts(keyword) ;

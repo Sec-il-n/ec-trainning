@@ -8,7 +8,7 @@
 <title>通販サイト○○</title>
 </head>
 <body>
-	<form action="/SerchServlet" method="post" name="serchform">
+	<form action="/ec-trainning/SerchServlet" method="post" name="serchform">
 	<label for="inputword">キーワード検索</label>
 	<input type="text" name="inputword">
 	<button type="submit">検索</button><br></form>

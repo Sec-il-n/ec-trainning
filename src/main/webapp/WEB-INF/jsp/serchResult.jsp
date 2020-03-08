@@ -14,6 +14,6 @@
 		<c:out value="${re.price}"/><br>
 	</c:forEach>
 
-	<a href="/IntoCartServlet"><c:out value="カートに入れる"/></a>
+	<a href="/ec-trainning/IntoCartServlet"><c:out value="カートに入れる"/></a>
 </body>
 </html>
