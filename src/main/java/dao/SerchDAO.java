@@ -42,8 +42,10 @@ public class SerchDAO  {
 			while(rs.next()){
 				int id=rs.getInt("id");
 				String product =rs.getString("product");
+				String category1=rs.getString("category1");
 				int price=rs.getInt("price");
-				Master msb=new Master(id,product,price);
+
+				Master msb=new Master(id,product,category1,price);
 				serchResult.add(msb);
 			}
 //			arrayLogics sl=new arrayLogics();
@@ -64,5 +66,36 @@ public class SerchDAO  {
 
 	}
 
+	public List<Master> findEach(int id) throws ClassNotFoundException {
 
+		List<Master> serchResult=new ArrayList<Master>();
+		String sql ;
+		Connection conn=null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			getSql gs=new getSql();
+			sql=gs.eachProducts(id) ;
+
+			PreparedStatement st1=conn.prepareStatement(sql);
+			ResultSet rs=st1.executeQuery();
+
+			while(rs.next()){
+				int i=rs.getInt("id");
+				String product =rs.getString("product");
+				String category1=rs.getString("category1");
+				int price=rs.getInt("price");
+
+				Master msb=new Master(i,product,category1,price);
+				serchResult.add(msb);
+			}
+//
+
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		return serchResult;
+
+	}
 }
