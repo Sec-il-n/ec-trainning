@@ -34,10 +34,13 @@ public class IntoCartServlet extends HttpServlet {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		IntoCart intoCart=new IntoCart();
 		List<Master> master=new  ArrayList<Master>();
+
+
 		String product =request.getParameter("product");
 		int price=Integer.parseInt(request.getParameter("price"));
 		int amount=Integer.parseInt(request.getParameter("amount"));
@@ -48,10 +51,15 @@ public class IntoCartServlet extends HttpServlet {
 		String category1=master.get(0).getCategory1();
 
 		calcCosts logic=new calcCosts();
-		intoCart=logic.getEachTotalAndTax(product,category1,price,amount) ;
+		intoCart=logic.getEachTotalAndTax(product,category1,price,amount) ;//NUll??
 
+		//intoCart をすべて格納するListをスコープで保持
+		List<IntoCart> cartlist=new ArrayList<IntoCart>();
 		HttpSession session=request.getSession();
-		session.setAttribute("intoCart-item", intoCart);
+		cartlist=(List<IntoCart>)session.getAttribute("cartList");
+		cartlist.add(intoCart);//NUllPointer
+		session.setAttribute("cartlist", cartlist);
+//		session.setAttribute("intoCart-item", intoCart);
 
 		String path="/WEB-INF/jsp/showCart.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);
