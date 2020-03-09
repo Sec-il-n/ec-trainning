@@ -13,8 +13,8 @@
 	<c:forEach var="de" items="${details}">
 		<c:out value="${de.product}"/><br>
 		<c:out value="${de.price}"/><br>
-		<form action="/ec-trainning/IntoCartServlet?id=${de.id}&product=${de.product}&price=${de.price}" method="post" name="serchform">
-
+		<!--  <form action="/ec-trainning/IntoCartServlet?id=${de.id}&product=${de.product}&price=${de.price}" method="post" name="serchform">-->
+		<form action="/ec-trainning/IntoCartServlet?id=${de.id}&price=${de.price}" method="post" name="serchform">
 		<label for="into-cart">数量</label>
 		<input type="text" name="amount" size="4" maxlength="3">
 

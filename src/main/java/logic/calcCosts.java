@@ -60,7 +60,7 @@ public class calcCosts{
 	}
 
 
-	public IntoCart getEachTotalPrice(String product,String category,int price,int amount) {
+	public IntoCart getEachTotalAndTax(String product,String category,int price,int amount) {
 
 		int totalPrice=price*amount;
 		int tax;

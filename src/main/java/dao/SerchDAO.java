@@ -89,8 +89,8 @@ public class SerchDAO  {
 				Master msb=new Master(i,product,category1,price);
 				serchResult.add(msb);
 			}
+////
 //
-
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
