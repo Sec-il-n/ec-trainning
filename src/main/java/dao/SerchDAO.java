@@ -16,7 +16,8 @@ public class SerchDAO  {
 //    static final String PASSWORD = System.getenv("DB_PASSWORD");
 	static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	static final String USERNAME = "postgres";
-    static final String PASSWORD = "s1e9r8i3";
+    static final String PASSWORD = "yfc";
+//    static final String PASSWORD = "s1e9r8i3";
 
 	public SerchDAO(){
 

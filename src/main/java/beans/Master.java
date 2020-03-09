@@ -11,9 +11,10 @@ public class Master implements Serializable{
 
 	public Master(int id,String product,int price) {
 		this.id=id;
-		this.price=price;
 		this.product=product;
+		this.price=price;
 	}
+
 
 	public int getId() {
 		return id;

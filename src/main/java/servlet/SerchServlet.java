@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.Master;
+import logic.arrayLogics;
 import logic.getResultSerchDAO;
 
 
@@ -42,10 +43,12 @@ public class SerchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String inputword;
 		List<Master> list=new ArrayList<Master>();
-		inputword=request.getParameter("keyword");
+		inputword=request.getParameter("inputword");
 		//daoで検索
 		getResultSerchDAO logic=new getResultSerchDAO();
 		list=logic.getResult(inputword);
+		arrayLogics al=new arrayLogics();
+		int i=al.getArrayLength(list);
 
 		HttpSession session=request.getSession();
 		session.setAttribute("result", list);

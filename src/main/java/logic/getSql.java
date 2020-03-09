@@ -10,17 +10,17 @@ public class getSql  {
 	List<Master> result=new ArrayList<Master>();
 
 	public String selectProducts(String keyword) {
-		 sql="select id,product,price from Master where product like '%"+ keyword + "%';";
+		 sql="SELECT id,product,price FROM master WHERE product LIKE '%"+ keyword + "%';";
 		return sql;
 
 	}
 	public String selectProducts_kat(String keyword) {
-		 sql="select id,product,price from Master where product_kat like '%"+ keyword + "%';";
+		 sql="SELLCT id,product,price FROM master WHERE product_kat LIKE '%"+ keyword + "%';";
 		return sql;
 
 	}
 	public String selectProducts_hir(String keyword) {
-		 sql="select id,product,price from Master where product_hir like '%"+ keyword + "%';";
+		 sql="SELECT id,product,price FROM master WHERE product_hir LIKE '%"+ keyword + "%';";
 		return sql;
 
 	}
