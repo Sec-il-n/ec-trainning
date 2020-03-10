@@ -40,6 +40,8 @@ public class SerchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String inputword;
+		String path;
+		String msg = null;
 		List<Master> list=new ArrayList<Master>();
 		inputword=request.getParameter("inputword");
 		//daoで検索
@@ -47,11 +49,17 @@ public class SerchServlet extends HttpServlet {
 		list=logic.getResult(inputword);
 		arrayLogics al=new arrayLogics();
 		int i=al.getArrayLength(list);
+		if (i==0) {
+			path="/index.jsp";
+			msg="検索結果がありませんでした。";
+		}else {
+			path="/WEB-INF/jsp/serchResult.jsp";
+		}
 		//検索件数表示用
 		HttpSession session=request.getSession();
+		request.setAttribute("msg", msg);
 		session.setAttribute("result", list);
 
-		String path="/WEB-INF/jsp/serchResult.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);
 		dsp.forward(request, response);
 		doGet(request, response);

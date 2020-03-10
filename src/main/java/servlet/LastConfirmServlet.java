@@ -9,32 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ReturnSerched")
-public class ReturnSerched extends HttpServlet {
+@WebServlet("/LastConfirmServlet")
+public class LastConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReturnSerched() {
+    public LastConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//別servletに移行
-		String path = null;
-		String param=request.getParameter("show");
-		if(param.equals("top")) {
-			path="/index.jsp";
-		}else if(param.equals("continue")) {
-			path="/WEB-INF/jsp/serchResult.jsp";
-		}
-//		path="/WEB-INF/jsp/serchResult.jsp";
+		String path="/WEB-INF/jsp/lastConfirm.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);
 		dsp.forward(request, response);
-
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

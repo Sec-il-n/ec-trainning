@@ -16,11 +16,11 @@
 		<c:out value="${cart.getAmount()}"/><br>
 	</c:forEach>
 
-	<c:forEach var="total" items="${totalinfo}">
 		<c:out value="消費税"/><br>
-		<c:out value="${total[0]}"/><br>
+		<c:out value="${totalinfo[0]}"/><br>
 		<c:out value="合計金額"/><br>
-		<c:out value="${total[1]}"/><br>
-	</c:forEach>
+		<c:out value="${totalinfo[1]}"/><br>
+
+		<a href="/ec-trainning/LastConfirm"><c:out value="注文を確定する"/></a>
 </body>
 </html>

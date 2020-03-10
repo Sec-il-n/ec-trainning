@@ -23,6 +23,6 @@
 	</c:forEach>
 
 
-	<!-- <a href="/ec-trainning/IntoCartServlet"><c:out value="カートに入れる"/></a> -->
+	<a href="/ec-trainning/ReturnSerched?show=top"><c:out value="検索画面に戻る"/></a>
 </body>
 </html>
