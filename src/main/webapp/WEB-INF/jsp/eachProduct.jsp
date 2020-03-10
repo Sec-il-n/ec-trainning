@@ -9,6 +9,8 @@
 <title>details</title>
 </head>
 <body>
+	<c:if test="${not empty empamountmsg}">
+		<c:out value="${empamountmsg}"/></c:if><br>
 
 	<c:forEach var="de" items="${details}">
 		<c:out value="${de.product}"/><br>
@@ -20,5 +22,6 @@
 
 		<button type="submit">カートにいれる</button></form>
 	</c:forEach>
+	<a class="cart" href="/ec-trainning/ShowCart"><c:out value="カート"/></a>
 </body>
 </html>

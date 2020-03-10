@@ -21,6 +21,6 @@
 		<c:out value="合計金額"/><br>
 		<c:out value="${totalinfo[1]}"/><br>
 
-		<a href="/ec-trainning/LastConfirm"><c:out value="注文を確定する"/></a>
+		<a href="/ec-trainning/LastConfirmServlet"><c:out value="注文を確定する"/></a>
 </body>
 </html>

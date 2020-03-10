@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>lastConfirm</title>
+<title>LastConfirmed</title>
 </head>
 <body>
 <c:out value="ご注文ありがとうございました。"/>
