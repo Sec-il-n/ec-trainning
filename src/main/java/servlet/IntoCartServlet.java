@@ -55,25 +55,14 @@ public class IntoCartServlet extends HttpServlet {
 		calcCosts logic=new calcCosts();
 		//intoCaretにはtax含む
 //		intoCart=logic.getEachTotalAndTax(product,category1,price,amount) ;
-		intoCart=logic.getEachTotalAndTax(id,product,category1,price,amount) ;//7要素のbean
+		intoCart=logic.getEachTotalAndTax(id,product,category1,price,amount) ;//7要素のbeant
+		//(id,product,price,amount,subtotal,tax,totalPrice)
 
 		//intoCart をすべて格納するListをスコープで保持
 		List<IntoCart> cartlist=new ArrayList<IntoCart>();
-//		List<IntoCart> cartlistNew=new ArrayList<IntoCart>();
 		HttpSession session=request.getSession();
 		cartlist=(List<IntoCart>)session.getAttribute("cartlist");
-//		arrayLogics alogic=new arrayLogics();
-//
-//		if(alogic.getArrayLengthCart(cartlist)>0){
-//			cartlist.add(intoCart);//NUllPointer
-//			session.setAttribute("cartlist", cartlist);
-//
-//		}else{
-//			cartlist.add(intoCart);//NUllPointer
-//			session.setAttribute("cartlist", cartlist);
-////			cartlistNew.add(intoCart);
-////			session.setAttribute("cartlist", cartlistNew);
-//		}
+
 		if(cartlist==null){
 			//sessionset
 			cartlist=new ArrayList<IntoCart>();
@@ -84,13 +73,6 @@ public class IntoCartServlet extends HttpServlet {
 			cartlist.add(intoCart);
 			session.setAttribute("cartlist", cartlist);
 		}
-
-//		cartlistNew.add(intoCart);//NUllPointer
-//		session.setAttribute("cartlist", cartlistNew);
-//		cartlist.add(intoCart);//NUllPointer
-//		session.setAttribute("cartlist", cartlist);
-//		cartlistNew.add(intoCart);
-//		session.setAttribute("cartlist", cartlistNew);
 
 		String path="/WEB-INF/jsp/showCart.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);

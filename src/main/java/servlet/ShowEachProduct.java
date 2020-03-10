@@ -48,6 +48,7 @@ public class ShowEachProduct extends HttpServlet {
 
 		HttpSession session=request.getSession();
 		session.setAttribute("details", list);
+
 		RequestDispatcher dsp=request.getRequestDispatcher(path);
 		dsp.forward(request, response);
 
