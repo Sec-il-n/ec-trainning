@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.IntoCart;
 import beans.Master;
-import logic.arrayLogics;
 import logic.calcCosts;
 import logic.getResultSerchDAO;
 
@@ -60,24 +59,38 @@ public class IntoCartServlet extends HttpServlet {
 
 		//intoCart をすべて格納するListをスコープで保持
 		List<IntoCart> cartlist=new ArrayList<IntoCart>();
-		List<IntoCart> cartlistNew=new ArrayList<IntoCart>();
+//		List<IntoCart> cartlistNew=new ArrayList<IntoCart>();
 		HttpSession session=request.getSession();
-		cartlist=(List<IntoCart>)session.getAttribute("cartList");
-		arrayLogics alogic=new arrayLogics();
-
-		if(alogic.getArrayLengthCart(cartlist)>0){
-			cartlist.add(intoCart);//NUllPointer
+		cartlist=(List<IntoCart>)session.getAttribute("cartlist");
+//		arrayLogics alogic=new arrayLogics();
+//
+//		if(alogic.getArrayLengthCart(cartlist)>0){
+//			cartlist.add(intoCart);//NUllPointer
+//			session.setAttribute("cartlist", cartlist);
+//
+//		}else{
+//			cartlist.add(intoCart);//NUllPointer
+//			session.setAttribute("cartlist", cartlist);
+////			cartlistNew.add(intoCart);
+////			session.setAttribute("cartlist", cartlistNew);
+//		}
+		if(cartlist==null){
+			//sessionset
+			cartlist=new ArrayList<IntoCart>();
+			cartlist.add(intoCart);
 			session.setAttribute("cartlist", cartlist);
-		}else{
-			cartlistNew.add(intoCart);
-			session.setAttribute("cartlist", cartlistNew);
+
+		}else {
+			cartlist.add(intoCart);
+			session.setAttribute("cartlist", cartlist);
 		}
 
-
-		cartlist.add(intoCart);//NUllPointer
-		session.setAttribute("cartlist", cartlist);
-		cartlistNew.add(intoCart);
-		session.setAttribute("cartlist", cartlistNew);
+//		cartlistNew.add(intoCart);//NUllPointer
+//		session.setAttribute("cartlist", cartlistNew);
+//		cartlist.add(intoCart);//NUllPointer
+//		session.setAttribute("cartlist", cartlist);
+//		cartlistNew.add(intoCart);
+//		session.setAttribute("cartlist", cartlistNew);
 
 		String path="/WEB-INF/jsp/showCart.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);

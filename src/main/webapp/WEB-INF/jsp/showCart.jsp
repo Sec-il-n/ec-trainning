@@ -22,7 +22,7 @@
 		<c:out value="${cart.getTotalPrice()}"/><br><br>
 
 	</c:forEach>
-	<a class="cart" href="/ec-trainning/SerchServlet?"><c:out value="ショッピングを続ける"/></a>
+	<a class="cart" href="/ec-trainning/ReturnSerched"><c:out value="ショッピングを続ける"/></a>
 	<a class="cart" href="/ec-trainning/ConfirmOrder">&nbsp; &nbsp;<c:out value="注文に進む"/></a>
 
 </body>

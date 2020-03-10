@@ -20,5 +20,6 @@
 
 		<button type="submit">カートにいれる</button></form>
 	</c:forEach>
+	<a class="cart" href="/ec-trainning/ShowCart"><c:out value="カート"/></a>
 </body>
 </html>
