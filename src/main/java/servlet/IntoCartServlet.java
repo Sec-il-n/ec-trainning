@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.IntoCart;
 import beans.Master;
+import logic.arrayLogics;
 import logic.calcCosts;
 import logic.getResultSerchDAO;
 
@@ -38,28 +39,45 @@ public class IntoCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		IntoCart intoCart=new IntoCart();
-		List<Master> master=new  ArrayList<Master>();
+//		List<Master> master=new  ArrayList<Master>();
+		Master m=new Master();
 
-
-		String product =request.getParameter("product");
+//		String product =request.getParameter("product");
 		int price=Integer.parseInt(request.getParameter("price"));
 		int amount=Integer.parseInt(request.getParameter("amount"));
 		int id=Integer.parseInt(request.getParameter("id"));
 
 		getResultSerchDAO dao=new  getResultSerchDAO();
-		master=dao.findEach(id);
-		String category1=master.get(0).getCategory1();
-
+//		master=dao.findEach(id);
+		m=dao.findEachReturnBean(id);
+		String product=m.getProduct();
+//		String category1=master.get(0).getCategory1();
+		String category1=m.getCategory1();
 		calcCosts logic=new calcCosts();
-		intoCart=logic.getEachTotalAndTax(product,category1,price,amount) ;//NUll??
+		//intoCaretにはtax含む
+//		intoCart=logic.getEachTotalAndTax(product,category1,price,amount) ;
+		intoCart=logic.getEachTotalAndTax(id,product,category1,price,amount) ;//7要素のbean
 
 		//intoCart をすべて格納するListをスコープで保持
 		List<IntoCart> cartlist=new ArrayList<IntoCart>();
+		List<IntoCart> cartlistNew=new ArrayList<IntoCart>();
 		HttpSession session=request.getSession();
 		cartlist=(List<IntoCart>)session.getAttribute("cartList");
+		arrayLogics alogic=new arrayLogics();
+
+		if(alogic.getArrayLengthCart(cartlist)>0){
+			cartlist.add(intoCart);//NUllPointer
+			session.setAttribute("cartlist", cartlist);
+		}else{
+			cartlistNew.add(intoCart);
+			session.setAttribute("cartlist", cartlistNew);
+		}
+
+
 		cartlist.add(intoCart);//NUllPointer
 		session.setAttribute("cartlist", cartlist);
-//		session.setAttribute("intoCart-item", intoCart);
+		cartlistNew.add(intoCart);
+		session.setAttribute("cartlist", cartlistNew);
 
 		String path="/WEB-INF/jsp/showCart.jsp";
 		RequestDispatcher dsp=request.getRequestDispatcher(path);

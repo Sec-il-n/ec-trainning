@@ -10,8 +10,20 @@
 </head>
 <body>
 	<c:forEach var="cart" items="${cartlist}">
-	<%--<%session.getAttribute("cartlist");%> --%>
-		<c:out value="${cart.getProduct()}"/>
+		<c:out value="商品"/><br>
+		<c:out value="${cart.getProduct()}"/><br>
+		<c:out value="小計"/><br>
+		<c:out value="${cart.getSubTotal()}"/><br>
+		<c:out value="数量"/><br>
+		<c:out value="${cart.getAmount()}"/><br>
+		<c:out value="消費税"/><br>
+		<c:out value="${cart.getTax()}"/><br>
+		<c:out value="合計金額"/><br>
+		<c:out value="${cart.getTotalPrice()}"/><br><br>
+
 	</c:forEach>
+	<a class="cart" href="/ec-trainning/SerchServlet?"><c:out value="ショッピングを続ける"/></a>
+	<a class="cart" href="/ec-trainning/ConfirmOrder">&nbsp; &nbsp;<c:out value="注文に進む"/></a>
+
 </body>
 </html>

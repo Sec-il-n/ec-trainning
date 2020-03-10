@@ -42,6 +42,7 @@ public class calcCosts{
 		int price;
 		int amount;
 		int totalPrice;
+		int subtotal;
 
 		List<IntoCart> total=new ArrayList<IntoCart>();
 		for(IntoCart cart:list){
@@ -50,6 +51,7 @@ public class calcCosts{
 			amount=cart.getAmount();
 			totalPrice=price*amount;
 
+//			totalPrice=subtotal+tax;
 			IntoCart intoC=new IntoCart(product,price,amount,totalPrice);
 			total.add(intoC);
 		}
@@ -60,13 +62,14 @@ public class calcCosts{
 	}
 
 
-	public IntoCart getEachTotalAndTax(String product,String category,int price,int amount) {
+//	public IntoCart getEachTotalAndTax(String product,String category,int price,int amount) {
+		public IntoCart getEachTotalAndTax(int id,String product,String category,int price,int amount) {
 
-		int totalPrice=price*amount;
-		int tax;
-
-		tax=(int) (totalPrice*getEachTaxRate(category));
-		IntoCart intoC=new IntoCart(product,price,amount,tax,totalPrice);
+		int subTotal=price*amount;
+		int tax=(int) (subTotal*getEachTaxRate(category));
+		int totalPrice=subTotal + tax;
+//		IntoCart intoC=new IntoCart(product,price,amount,subTotal,tax,totalPrice);
+		IntoCart intoC=new IntoCart(id,product,price,amount,subTotal,tax,totalPrice);
 
 		return intoC;
 

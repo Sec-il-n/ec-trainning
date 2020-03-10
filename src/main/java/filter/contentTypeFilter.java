@@ -37,6 +37,7 @@ public class contentTypeFilter implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
+//		request.setCharacterEncoding("Shift_JIS");
 		request.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 	}

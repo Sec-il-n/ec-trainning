@@ -16,8 +16,8 @@ public class SerchDAO  {
 //    static final String PASSWORD = System.getenv("DB_PASSWORD");
 	static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	static final String USERNAME = "postgres";
-//    static final String PASSWORD = "yfc";
-    static final String PASSWORD = "s1e9r8i3";
+    static final String PASSWORD = "yfc";
+//    static final String PASSWORD = "s1e9r8i3";
 
 	public SerchDAO(){
 
@@ -96,6 +96,40 @@ public class SerchDAO  {
 			e.printStackTrace();
 		}
 		return serchResult;
+
+	}
+
+	public Master findEachReturnBean(int id) throws ClassNotFoundException {
+
+//		List<Master> serchResult=new ArrayList<Master>();
+		Master msb=new Master();
+		String sql;
+		Connection conn=null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			getSql gs=new getSql();
+			sql=gs.eachProducts(id) ;
+
+			PreparedStatement st1=conn.prepareStatement(sql);
+			ResultSet rs=st1.executeQuery();
+
+			while(rs.next()){
+				int i=rs.getInt("id");
+				String product =rs.getString("product");
+				String category1=rs.getString("category1");
+				int price=rs.getInt("price");
+
+				msb=new Master(i,product,category1,price);
+//				serchResult.add(msb);
+			}
+////
+//
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		return msb;
 
 	}
 }

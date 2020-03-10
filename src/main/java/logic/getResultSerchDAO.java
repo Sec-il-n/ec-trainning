@@ -35,4 +35,17 @@ public class getResultSerchDAO {
 		}
 		return list;
 	}
+
+	public Master findEachReturnBean(int id) {
+		SerchDAO dao=new SerchDAO();
+		Master master=new Master();
+		try {
+			master=dao.findEachReturnBean(id);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return master;
+
+	}
 }
